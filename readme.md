@@ -67,7 +67,7 @@ around), at 16:9 2160p and 21:9 1440p.
 If you're in a special map zone that is NOT the overworld that does not show the
 "1", "2", etc labels next to the different world areas (only such zone I have
 found is Gatehall), then it relies on very specific colors that are dependent on
-you brightness settings to click your map to the overworld.
+your brightness settings to click your map to the overworld.
 
 If the script freaks out for some reason (eg, it is scrolling the map but can't
 find Gatehall) it will stop working if Diablo loses focus (so: alt-tab) or if
