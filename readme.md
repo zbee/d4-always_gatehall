@@ -24,13 +24,13 @@ Of course, it is still use at your own risk.
 
 # Use
 
-- Download the latest release (if your map is `M` and `G` is fine for Gatehall)
+- [Download the latest release](https://github.com/zbee/d4-always_gatehall/releases/download/v1/always_gatehall.zip) (if your map is `M` and `G` is fine for Gatehall)
 - Extract the `.exe` and the images into a folder where ever
 - Run the `.exe` whenever you're grinding Diablo, and press `G` whenever you
   want to go to the best town!
 
 If the keybinds are not acceptable:
-- Download the repository
+- [Download the repository](https://github.com/zbee/d4-always_gatehall/archive/refs/heads/main.zip)
 - Extract the `.ahk` and the images into a folder where ever
 - Edit the `.ahk` to your keybinds (search for `; Core keybinds` in the file, 
   and edit both the letters in `{M}` and `g::` to be the 2 keys you want)
