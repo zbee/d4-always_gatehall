@@ -54,6 +54,9 @@ If the keybinds are not acceptable:
 - Then it will TP you to Gatehall if was found
   - If the click fails, it will try up to 2 more times
 
+TODO: Change this flow to require the map already be opened (to give another way
+to bail out of the process, and to prevent it from triggering from chat)
+
 
 ## Compatibility
 
