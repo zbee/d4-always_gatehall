@@ -24,13 +24,13 @@ Of course, it is still use at your own risk.
 
 # Use
 
-- Download the latest release (if your map is `M` and `G` is fine for Gatehall)
+- [Download the latest release](https://github.com/zbee/d4-always_gatehall/releases/download/v2/always_gatehall.zip) (if your map is `M` and `G` is fine for Gatehall)
 - Extract the `.exe` and the images into a folder where ever
 - Run the `.exe` whenever you're grinding Diablo, and press `G` whenever you
   want to go to the best town!
 
 If the keybinds are not acceptable:
-- Download the repository
+- [Download the repository](https://github.com/zbee/d4-always_gatehall/archive/refs/heads/main.zip)
 - Extract the `.ahk` and the images into a folder where ever
 - Edit the `.ahk` to your keybinds (search for `; Core keybinds` in the file, 
   and edit both the letters in `{M}` and `g::` to be the 2 keys you want)
@@ -54,6 +54,9 @@ If the keybinds are not acceptable:
 - Then it will TP you to Gatehall if was found
   - If the click fails, it will try up to 2 more times
 
+TODO: Change this flow to require the map already be opened (to give another way
+to bail out of the process, and to prevent it from triggering from chat)
+
 
 ## Compatibility
 
@@ -67,7 +70,7 @@ around), at 16:9 2160p and 21:9 1440p.
 If you're in a special map zone that is NOT the overworld that does not show the
 "1", "2", etc labels next to the different world areas (only such zone I have
 found is Gatehall), then it relies on very specific colors that are dependent on
-you brightness settings to click your map to the overworld.
+your brightness settings to click your map to the overworld.
 
 If the script freaks out for some reason (eg, it is scrolling the map but can't
 find Gatehall) it will stop working if Diablo loses focus (so: alt-tab) or if
