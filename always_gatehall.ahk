@@ -2,7 +2,6 @@
 ; https://github.com/zbee
 ; 2024-02-01, Season 3
 
-; Version 1
 ; https://github.com/zbee/d4-always_gatehall
 
 
@@ -19,9 +18,9 @@ global map_keybind := "{M}"  ; Controls > Menus > Map Screen
 
 ; Adjust these as needed for your system
 global very_short_sleep := 50 ; After zooms and map drags
-global short_sleep := 200     ; Next to clicks and keybinds
-global medium_sleep := 300    ; After making UI changes, such as opening filters
-global long_sleep := 400      ; After opening screens, like the map
+global short_sleep := 175     ; Next to clicks and keybinds
+global medium_sleep := 250    ; After making UI changes, such as opening filters
+global long_sleep := 350      ; After opening screens, like the map
 
 ; Colors searched for, and their tolerances
 ; Could need adjusted based on brightness
@@ -31,7 +30,7 @@ global screen_close_button_tolerance := 10
 
 ; The first "deep" blue above the triangle in the center of a waypoint icon
 global waypoint_blue := 0x26CDDE
-global waypoint_tolerance := 15
+global waypoint_tolerance := 10
 
 ; The x coordinate of the map area buttons, the 2nd pixel from the left
 ; This is fallback functionality for maps without "1", "2", etc icons,
@@ -61,6 +60,11 @@ global filter_keybind := "{F}" ; Keybind not adjustable in game
 ;
 open_map() {
     if (WinActive("Diablo IV")) {
+        ; Exit if chat is open
+        if (_chat_open()) {
+            return
+        }
+
         ; Open the map
         _open_map()
 
@@ -94,6 +98,39 @@ open_map() {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Core Functionality
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;
+; Whether the chat is open
+;
+_chat_open() {
+    all_channels_button_found := ImageSearch(
+        &found_x, &found_y,
+        A_ScreenWidth/4*3, A_ScreenHeight/2,
+        A_ScreenWidth, A_ScreenHeight,
+        "*30 *TransBlack all_chat_channels.png"
+    )
+    debug("all channels found: " . all_channels_button_found)
+    debug(found_x . ", " . found_y)
+    
+    expand_chat_button_found := ImageSearch(
+        &found_x, &found_y,
+        A_ScreenWidth/5*4, A_ScreenHeight/2,
+        A_ScreenWidth, A_ScreenHeight,
+        "*30 *TransBlack expand_chat.png"
+    )
+    debug("expand found: " . expand_chat_button_found)
+    debug(found_x . ", " . found_y)
+    debug("Chat open: " . (all_channels_button_found || expand_chat_button_found))
+
+    chat_open := all_channels_button_found || expand_chat_button_found
+
+    if (chat_open) {
+        debug("Chat open, aborting ...")
+    }
+
+    return chat_open
+}
 
 
 ;
@@ -156,7 +193,7 @@ _get_to_world_map() {
     ; Search for the "1", "2", etc icons that are shown in the list of areas
     map_area_labels_found := ImageSearch(
         &found_x, &found_y,
-        0, A_ScreenHeight/3*2,
+        0, A_ScreenHeight/3,
         150, A_ScreenHeight,
         "*30 world_area_section.png"
     )
@@ -365,6 +402,11 @@ _search_for_gatehall() {
         {
             break
         }
+        ; Break if the chat is open
+        if (_chat_open())
+        {
+            break
+        }
     
         debug("...Repositioning map ...")
 
@@ -397,8 +439,8 @@ _search_for_gatehall() {
             Sleep(very_short_sleep)
             MouseClickDrag(
                 "left",
-                A_ScreenWidth-700, 400,
-                A_ScreenWidth-900, 700
+                A_ScreenWidth-500, 350,
+                A_ScreenWidth-1100, 900
             )
             Sleep(short_sleep)
         }
