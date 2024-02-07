@@ -42,6 +42,7 @@ If the keybinds are not acceptable:
 ### Functionality
 
 - It will open your map
+  - If your chat is open, it will abort
   - If your map was already open, it will then reopen the map
 - If your journal was open, it will close it
 - It will get to the world map from whatever map you're on
@@ -53,9 +54,6 @@ If the keybinds are not acceptable:
 - Then it will turn the Waypoints back on
 - Then it will TP you to Gatehall if was found
   - If the click fails, it will try up to 2 more times
-
-TODO: Change this flow to require the map already be opened (to give another way
-to bail out of the process, and to prevent it from triggering from chat)
 
 
 ## Compatibility
